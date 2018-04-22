@@ -3,3 +3,5 @@ build/
 output_pcm/
 .vscode/
 vad-demo*
+
+*.dll

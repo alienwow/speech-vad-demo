@@ -9,7 +9,8 @@
 
 static inline int cut_write_file(struct cut_info *cut, int frames) {
     int size = frames * FRAME_SIZE * sizeof(uint16_t);
-    uint16_t buffer[size];
+	uint16_t buffer[65535];
+	//uint16_t buffer[size];
     int readed = fread(buffer, 1, size, cut->fp);
     if (readed > 0) {
         FILE *res_file = fopen(cut->result_filename, "wb+");
