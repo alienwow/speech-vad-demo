@@ -13,7 +13,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -m64")
 file(GLOB SRC_FILES src/*.c src/*.h thirdparty/webrtc/common_audio/*/*.c thirdparty/webrtc/rtc_base/*.c*)
 include_directories(thirdparty/webrtc)
 
-#file(GLOB SRC_FILES src_test/*.h src/*.c)
+#file(GLOB SRC_FILES src_test/*.h src_test/*.c)
 
 #add_executable(FileCutUtil ${SRC_FILES})
 

@@ -7,7 +7,7 @@ cd build
 
 cmake .. -G "MinGW Makefiles"					&& ^
 mingw32-make -j4							    && ^
-copy libFileCutUtil.dll ..							&& ^
+copy libFileCutUtil.dll ..						&& ^
 echo #-----------build succeeded----------#		&& ^
 
 cd ..
