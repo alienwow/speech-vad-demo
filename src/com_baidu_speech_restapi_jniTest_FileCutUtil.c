@@ -14,18 +14,41 @@
 // 16000 采样率 10ms，  大小 = 160 * 16bits/8 = 320字节 ,
 
 int run(FILE *fp, simple_vad *vad, struct cut_info *cut);
-
 int add_period_activity(struct periods *per, int is_active, int is_last);
 
-// JNIEXPORT void JNICALL Java_com_baidu_speech_restapi_jniTest_FileCutUtil_finalize
-//   (JNIEnv * a, jobject b){
-// 	printf("Wenhao.Wu1\n");
-// }
 JNIEXPORT jint JNICALL Java_com_baidu_speech_restapi_jniTest_FileCutUtil_setFile
-  (JNIEnv * a, jobject b, jcharArray c, jcharArray d){
-    const char filename[] = "pcm/16k_1.pcm"; // 读取的文件
-    const char output_filename_prefix[] = "16k_1.pcm"; // 保存的文件名
-    const char output_dir[] = "output_pcm"; // 保存的目录
+  (JNIEnv * env
+  , jobject obj
+  , jcharArray fileName_Java
+  , jcharArray output_filename_prefix_Java
+  , jcharArray output_dir_Java) {
+    //filename
+    jchar* array = (*env)->GetCharArrayElements(env,fileName_Java, JNI_FALSE);
+    uint32_t arraysize = (*env)->GetArrayLength(env, fileName_Java);
+    char filename[arraysize+1];   
+    for(int i = 0; i < arraysize; i++){
+        filename[i] = array[i];   
+    }   
+    filename[arraysize] = '\0';
+
+    //output_filename_prefix
+    jchar* array1 = (*env)->GetCharArrayElements(env,output_filename_prefix_Java, JNI_FALSE);
+    uint32_t arraysize1 = (*env)->GetArrayLength(env, output_filename_prefix_Java);
+    char output_filename_prefix[arraysize1+1];   
+    for(int i = 0; i < arraysize1; i++){
+        output_filename_prefix[i] = array1[i];   
+    }   
+    output_filename_prefix[arraysize1] = '\0';
+
+    //output_dir
+    jchar* array2 = (*env)->GetCharArrayElements(env,output_dir_Java, JNI_FALSE);
+    uint32_t arraysize2 = (*env)->GetArrayLength(env, output_dir_Java);
+    char output_dir[arraysize2+1];   
+    for(int i = 0; i < arraysize2; i++){
+        output_dir[i] = array2[i];   
+    }   
+    output_dir[arraysize2] = '\0';
+
     FILE *fp = fopen(filename, "rb");
     if (fp == NULL) {
         fprintf(stderr, "%s does not exist\n", filename);

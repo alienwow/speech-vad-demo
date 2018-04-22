@@ -10,10 +10,10 @@ extern "C" {
 /*
  * Class:     com_baidu_speech_restapi_jniTest_FileCutUtil
  * Method:    setFile
- * Signature: ([C[C)I
+ * Signature: ([C[C[C)I
  */
 JNIEXPORT jint JNICALL Java_com_baidu_speech_restapi_jniTest_FileCutUtil_setFile
-  (JNIEnv *, jobject, jcharArray, jcharArray);
+  (JNIEnv *, jobject, jcharArray, jcharArray, jcharArray);
 
 /*
  * Class:     com_baidu_speech_restapi_jniTest_FileCutUtil
